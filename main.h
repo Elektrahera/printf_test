@@ -24,7 +24,7 @@ void print_int(int num);
 			str = va_arg(args, const char *);\
 			if (str == NULL)\
 			{ \
-				puts("(null)");\
+				fputs("(null)", stdout);\
 				count += 6;\
 			} \
 			while (*str)\
