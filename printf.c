@@ -21,6 +21,11 @@ int _printf(const char *format, ...)
 
 	while (*format)
 	{
+		if (*format == '%' && *(format + 1) == '\0')
+		{
+			break;
+		}
+
 		if (*format == '%' && *(format + 1) == '%')
 		{
 			putchar(*(format + 1));
