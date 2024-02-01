@@ -21,7 +21,14 @@ int _printf(const char *format, ...)
 
 	while (*format)
 	{
-		if (*format == '%' && *(format + 1) != '\0')
+		if (*format == '%' && *(format + 1) == '%')
+		{
+			putchar(*(format + 1));
+			count++;
+			format++;
+		}
+
+		else if (*format == '%' && *(format + 1) != '\0')
 		{
 			format++;
 			FORMAT_SPECIFIER();

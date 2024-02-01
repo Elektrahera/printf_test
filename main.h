@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 
 int _printf(const char *format, ...);
@@ -22,20 +23,18 @@ void print_int(int num);
 			break;\
 		case 's':\
 			str = va_arg(args, const char *);\
+			\
 			if (str == NULL)\
-			{ \
-				fputs("(null)", stdout);\
+			{	\
+				write(1, "(null)", 6);\
 				count += 6;\
-			} \
+			}	\
 			while (*str)\
 			{ \
-				putchar(*str++);\
+				putchar(*str);\
+				str++;\
 				count++;\
 			} \
-			break;\
-		case '%':\
-			putchar('%');\
-			count++;\
 			break;\
 		case 'd':\
 			print_int(va_arg(args, int));\
